@@ -1,0 +1,78 @@
+/*
+ * Design tokens — FORJA Performance
+ * Componentes usam APENAS os tokens semânticos (camada 2).
+ *
+ * Breakpoints (mobile first, sempre min-width):
+ *   480px  smartphones grandes
+ *   768px  tablets
+ *   1024px notebooks
+ *   1280px desktops
+ * Variáveis CSS não funcionam dentro de @media, por isso ficam documentadas aqui.
+ */
+
+:root {
+  /* ---------- Cores: primitivos ---------- */
+  --color-coal: #0e0e10;
+  --color-graphite: #1a1a1f;
+  --color-steel: #2c2c33;
+  --color-ember: #ff5a1f;
+  --color-ember-dark: #d9480f;
+  --color-bone: #f2efea;
+  --color-mist: #9a9aa3;
+  --color-whatsapp: #25d366;
+
+  /* ---------- Cores: semânticos ---------- */
+  --color-bg: var(--color-coal);
+  --color-surface: var(--color-graphite);
+  --color-border: var(--color-steel);
+  --color-text: var(--color-bone);
+  --color-text-muted: var(--color-mist);
+  --color-accent: var(--color-ember);
+  --color-accent-hover: var(--color-ember-dark);
+  --color-on-accent: var(--color-coal);
+
+  /* ---------- Tipografia ---------- */
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --font-body: 'DM Sans Variable', system-ui, sans-serif;
+
+  --fs-hero: clamp(2.75rem, 1.25rem + 7vw, 6.5rem);
+  --fs-h2: clamp(2rem, 1.25rem + 3.5vw, 3.5rem);
+  --fs-h3: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.75rem;
+
+  --lh-tight: 0.95;
+  --lh-body: 1.6;
+  --tracking-wide: 0.2em;
+
+  /* ---------- Espaçamento (base 4px) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --section-padding: clamp(4rem, 3rem + 5vw, 8rem);
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container-max: 75rem;
+
+  /* ---------- Forma ---------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 999px;
+
+  /* ---------- Movimento ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+
+  /* ---------- Camadas e medidas fixas ---------- */
+  --header-height: 4.5rem;
+  --z-float: 90;
+  --z-header: 100;
+}
