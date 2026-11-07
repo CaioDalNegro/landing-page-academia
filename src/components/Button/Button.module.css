@@ -1,0 +1,60 @@
+/* Base comum a todas as variantes */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+/* Feedback tátil ao pressionar */
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Tamanhos: altura mínima garante área de toque confortável */
+.md {
+  min-height: 3rem;
+  padding-inline: var(--space-5);
+  font-size: var(--fs-small);
+}
+
+.sm {
+  min-height: 2.5rem;
+  padding-inline: var(--space-4);
+  font-size: 0.8125rem;
+}
+
+/* Variante principal: CTA de conversão */
+.primary {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* Variante secundária: ação alternativa, sem competir com o CTA */
+.outline {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+/* Hover só em dispositivos com mouse, evita o efeito "preso" após o toque no celular */
+@media (hover: hover) {
+  .primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
