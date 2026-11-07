@@ -1,8 +1,8 @@
 import Header from './sections/Header/Header';
+import Hero from './sections/Hero/Hero';
 
 // Seções provisórias para testar a navegação; serão substituídas nas próximas etapas
 const PLACEHOLDER_SECTIONS = [
-  'inicio',
   'sobre',
   'modalidades',
   'estrutura',
@@ -16,6 +16,7 @@ function App() {
     <>
       <Header />
       <main>
+        <Hero />
         {PLACEHOLDER_SECTIONS.map((id) => (
           <section
             key={id}
