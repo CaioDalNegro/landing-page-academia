@@ -1,24 +1,29 @@
+/* Aplica border-box para facilitar o cálculo das dimensões */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Remove margens padrão dos navegadores */
 * {
   margin: 0;
 }
 
+/* Impede o iOS de aumentar o texto sozinho ao girar a tela */
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
+/* Garante que o body ocupe pelo menos a altura visível da tela (svh considera a barra do navegador) */
 body {
   min-height: 100svh;
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
 }
 
+/* Mídias nunca ultrapassam o container e perdem o espaço extra abaixo delas */
 img,
 picture,
 video,
@@ -27,6 +32,7 @@ svg {
   max-width: 100%;
 }
 
+/* Campos e botões herdam a fonte do site em vez da fonte do sistema */
 input,
 button,
 textarea,
@@ -35,12 +41,14 @@ select {
   color: inherit;
 }
 
+/* Botões começam sem estilo visual; cada componente define o seu */
 button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
+/* Quebra palavras longas para não estourar a largura no celular */
 h1,
 h2,
 h3,
@@ -56,6 +64,7 @@ ol[role='list'] {
   padding: 0;
 }
 
+/* Respeita quem configurou o sistema para reduzir animações */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

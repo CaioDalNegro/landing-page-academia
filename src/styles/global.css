@@ -1,8 +1,10 @@
+/* Rolagem suave nos links âncora, compensando a altura do header fixo */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
 }
 
+/* Cores e fonte base do site */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -10,6 +12,7 @@ body {
   font-size: var(--fs-body);
 }
 
+/* Títulos com a fonte de impacto; balance distribui melhor as linhas */
 h1,
 h2,
 h3 {
@@ -20,6 +23,7 @@ h3 {
   text-wrap: balance;
 }
 
+/* Evita uma palavra sozinha na última linha dos parágrafos */
 p {
   text-wrap: pretty;
 }
@@ -29,11 +33,13 @@ a {
   text-decoration: none;
 }
 
+/* Seleção de texto nas cores da marca */
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-on-accent);
 }
 
+/* Contorno de foco visível apenas na navegação por teclado */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
@@ -41,12 +47,13 @@ a {
 
 /* ---------- Utilitários ---------- */
 
+/* Largura máxima centralizada com margens laterais fluidas, sem media query */
 .container {
   width: min(100% - 2 * var(--gutter), var(--container-max));
   margin-inline: auto;
 }
 
-/* Seção de fundo claro: redefine os tokens semânticos, os componentes se adaptam sozinhos */
+/* Seção de fundo claro: redefine os tokens semânticos e os componentes se adaptam sozinhos */
 .section-light {
   --color-bg: var(--color-bone);
   --color-surface: #e6e2db;
