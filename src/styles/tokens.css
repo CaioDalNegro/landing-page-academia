@@ -32,7 +32,7 @@
   --color-on-accent: var(--color-coal);
 
   /* ---------- Tipografia ---------- */
-  --font-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
   --font-body: 'DM Sans Variable', system-ui, sans-serif;
 
   --fs-hero: clamp(2.75rem, 1.25rem + 7vw, 6.5rem);
