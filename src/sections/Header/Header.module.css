@@ -1,0 +1,208 @@
+/* Header fixo no topo, transparente enquanto está sobre o hero */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-header);
+}
+
+/*
+ * Fundo com desfoque em um pseudo-elemento: backdrop-filter aplicado direto no header
+ * faria o menu mobile (position: fixed) se posicionar em relação ao header, e não à tela
+ */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-bottom: 1px solid var(--color-border);
+  background-color: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+/* Revela o fundo ao rolar ou com o menu aberto */
+.solid::before {
+  opacity: 1;
+}
+
+/* Barra: logo à esquerda, ações à direita */
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-height);
+}
+
+/* Empurra os demais itens para a direita */
+.logo {
+  margin-inline-end: auto;
+}
+
+/* Botão do menu: área de toque de 44px; order o coloca depois do CTA visualmente */
+.toggle {
+  order: 1;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-inline-end: calc(var(--space-2) * -1);
+  color: var(--color-text);
+}
+
+/* ---------- Menu mobile: painel em tela cheia abaixo da barra ---------- */
+
+.nav {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-7);
+  padding: var(--space-5) var(--gutter) var(--space-7);
+  overflow-y: auto;
+  background-color: var(--color-bg);
+
+  /* Fechado: invisível e fora da navegação por teclado e leitores de tela */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    visibility var(--duration-base);
+}
+
+.navOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+/* Contador CSS gera a numeração 01, 02, 03... sem repetir dados no JSX */
+.navList {
+  counter-reset: nav;
+}
+
+.navList li {
+  counter-increment: nav;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Links grandes, fáceis de tocar e com a tipografia de impacto da marca */
+.navLink {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.navLink::before {
+  content: counter(nav, decimal-leading-zero);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+}
+
+.navCta {
+  width: 100%;
+}
+
+/* CTA da barra fica oculto nas telas menores, onde o espaço é do logo e do menu */
+.headerCta {
+  display: none;
+}
+
+@media (hover: hover) {
+  .navLink:hover {
+    color: var(--color-accent);
+  }
+}
+
+/* ---------- Smartphones grandes ---------- */
+
+@media (min-width: 480px) {
+  .headerCta {
+    display: inline-flex;
+  }
+}
+
+/* ---------- Desktop: menu vira uma linha horizontal ---------- */
+
+@media (min-width: 1024px) {
+  .inner {
+    gap: var(--space-7);
+  }
+
+  .toggle,
+  .navCta {
+    display: none;
+  }
+
+  /* Desfaz o painel mobile e devolve o nav ao fluxo da barra */
+  .nav {
+    position: static;
+    padding: 0;
+    overflow: visible;
+    background: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .navList {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  .navList li {
+    border-bottom: none;
+  }
+
+  /* Links discretos, para o CTA continuar sendo o elemento de maior destaque */
+  .navLink {
+    position: relative;
+    padding-block: var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    text-transform: none;
+    color: var(--color-text-muted);
+  }
+
+  .navLink::before {
+    content: none;
+  }
+
+  /* Sublinhado que cresce da esquerda para a direita no hover */
+  .navLink::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  @media (hover: hover) {
+    .navLink:hover {
+      color: var(--color-text);
+    }
+
+    .navLink:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+}

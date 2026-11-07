@@ -1,19 +1,33 @@
-// Conteúdo temporário para validar os tokens — será substituído pelas seções reais
+import Header from './sections/Header/Header';
+
+// Seções provisórias para testar a navegação; serão substituídas nas próximas etapas
+const PLACEHOLDER_SECTIONS = [
+  'inicio',
+  'sobre',
+  'modalidades',
+  'estrutura',
+  'planos',
+  'depoimentos',
+  'contato',
+];
+
 function App() {
   return (
-    <main>
-      <section className="container">
-        <h1 style={{ fontSize: 'var(--fs-hero)', fontWeight: 900 }}>Forjado na rotina.</h1>
-        <p>Texto de corpo em DM Sans. Cada repetição molda quem você vai ser.</p>
-      </section>
-
-      <section className="section-light">
-        <div className="container">
-          <h2>Seção clara</h2>
-          <p>Os mesmos componentes, outros tokens.</p>
-        </div>
-      </section>
-    </main>
+    <>
+      <Header />
+      <main>
+        {PLACEHOLDER_SECTIONS.map((id) => (
+          <section
+            key={id}
+            id={id}
+            className="container"
+            style={{ minHeight: '100svh', paddingTop: 'var(--header-height)' }}
+          >
+            <h2>{id}</h2>
+          </section>
+        ))}
+      </main>
+    </>
   );
 }
 
