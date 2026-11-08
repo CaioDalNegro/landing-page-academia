@@ -53,6 +53,11 @@ a {
   margin-inline: auto;
 }
 
+/* Espaçamento vertical padrão das seções; evita repetir o mesmo padding em cada módulo */
+.section {
+  padding-block: var(--section-padding);
+}
+
 /* Seção de fundo claro: redefine os tokens semânticos e os componentes se adaptam sozinhos */
 .section-light {
   --color-bg: var(--color-bone);

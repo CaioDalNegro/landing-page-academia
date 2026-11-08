@@ -1,0 +1,42 @@
+/* Empilha rótulo, título e descrição com espaçamento uniforme */
+.header {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 40rem;
+}
+
+/* Rótulo editorial: "02 — SOBRE" */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Número em brasa seguido de um traço, como marcação técnica */
+.number {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-accent);
+}
+
+.number::after {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+.description {
+  max-width: 34rem;
+  color: var(--color-text-muted);
+}
