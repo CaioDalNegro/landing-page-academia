@@ -1,0 +1,142 @@
+/* ---------- Apresentação ---------- */
+
+.intro {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.manifesto {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 36rem;
+  color: var(--color-text-muted);
+}
+
+/* Frase de impacto em destaque, com traço de brasa à esquerda */
+.statement {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-accent);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+/* ---------- Diferenciais ---------- */
+
+/* auto-fit cria quantas colunas couberem com no mínimo 15rem, sem media query */
+.differentials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.differential {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+/* Ícone sobre um quadrado em brasa translúcida */
+.iconBox {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  color: var(--color-accent);
+}
+
+.differentialTitle {
+  font-size: var(--fs-h3);
+}
+
+.differentialText {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Metodologia ---------- */
+
+.method {
+  margin-top: var(--space-8);
+}
+
+.methodTitle {
+  margin-bottom: var(--space-6);
+  font-size: var(--fs-h3);
+}
+
+/* Contador CSS numera as etapas, como no menu mobile */
+.steps {
+  display: grid;
+  gap: var(--space-6);
+  counter-reset: step;
+}
+
+/* No celular: linha vertical à esquerda conecta as etapas */
+.step {
+  position: relative;
+  display: grid;
+  align-content: start; /* impede que as linhas internas estiquem quando o card vizinho é mais alto */
+  gap: var(--space-2);
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--color-border);
+  counter-increment: step;
+}
+
+/* Número vazado (só contorno), elemento gráfico da identidade */
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-accent);
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.stepText {
+  max-width: 22rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Tablet: etapas lado a lado, linha passa para o topo ---------- */
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .step {
+    padding-top: var(--space-5);
+    padding-left: 0;
+    border-top: 1px solid var(--color-border);
+    border-left: none;
+  }
+}
+
+/* ---------- Desktop: título e manifesto em duas colunas ---------- */
+
+@media (min-width: 1024px) {
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: var(--space-8);
+  }
+}
