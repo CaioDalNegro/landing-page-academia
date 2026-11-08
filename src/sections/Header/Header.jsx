@@ -4,6 +4,7 @@ import Logo from '../../components/Logo/Logo';
 import Button from '../../components/Button/Button';
 import { NAV_LINKS } from '../../data/navigation';
 import { WHATSAPP_URL } from '../../data/contact';
+import { useScrolledPast } from '../../hooks/useScrolledPast';
 import styles from './Header.module.css';
 
 // Rolagem (em px) a partir da qual o header ganha fundo
@@ -21,17 +22,8 @@ const whatsappLinkProps = {
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Lê a posição inicial para o caso de a página recarregar já rolada
-  const [isScrolled, setIsScrolled] = useState(() => window.scrollY > SCROLL_THRESHOLD);
+  const isScrolled = useScrolledPast(SCROLL_THRESHOLD);
   const toggleRef = useRef(null);
-
-  // Alterna o visual do header conforme a rolagem
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Fecha o menu quando a tela cresce até o layout desktop
   useEffect(() => {
