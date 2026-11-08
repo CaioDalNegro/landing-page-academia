@@ -1,0 +1,79 @@
+/*
+ * Rodapé em superfície um tom acima do fundo, separado por uma linha.
+ * Padding inferior extra reserva espaço para o botão flutuante do WhatsApp não cobrir o texto
+ */
+.footer {
+  padding-block: var(--space-8) calc(var(--space-5) + 5rem);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* auto-fit: colunas lado a lado quando cabem, empilhadas no celular */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: var(--space-7) var(--space-6);
+}
+
+.brand {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.tagline {
+  max-width: 22rem;
+}
+
+/* Títulos das colunas no estilo dos rótulos do site */
+.title {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+}
+
+.links {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.link {
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* Barra final: empilhada no celular, nas pontas no desktop */
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-eyebrow);
+}
+
+.credit {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .link:hover,
+  .credit:hover {
+    color: var(--color-accent);
+  }
+}
+
+/* Desktop: a coluna da marca ocupa mais espaço que as demais */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,185 @@
+/* Celular: informações e mapa empilhados; desktop: lado a lado */
+.layout {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.info {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-6);
+}
+
+/* ---------- Blocos de informação ---------- */
+
+.block {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Título pequeno com ícone em brasa, no estilo dos rótulos do site */
+.blockTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-muted);
+}
+
+.blockTitle svg {
+  color: var(--color-accent);
+}
+
+.address {
+  font-style: normal;
+}
+
+/* Dia à esquerda e horário à direita, como uma tabela simples */
+.hours {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 24rem;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.hoursRow dd {
+  font-weight: 700;
+}
+
+.channels {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* min-height garante área de toque mesmo em links de uma linha */
+.channel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  overflow-wrap: anywhere;
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.social {
+  margin-top: var(--space-2);
+}
+
+/* ---------- Mapa ilustrado ---------- */
+
+/*
+ * Ruas desenhadas com gradientes repetidos: duas grades em ângulos diferentes
+ * simulam quarteirões sem nenhuma imagem
+ */
+.map {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 22rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3.5rem,
+      var(--color-border) 3.5rem calc(3.5rem + 2px)
+    ),
+    repeating-linear-gradient(90deg, transparent 0 5rem, var(--color-border) 5rem calc(5rem + 2px)),
+    linear-gradient(
+      -35deg,
+      transparent 48%,
+      color-mix(in srgb, var(--color-accent) 35%, transparent) 48% 52%,
+      transparent 52%
+    );
+}
+
+/* Pino com halo pulsante, marcando a academia no centro do mapa */
+.mapPin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.mapPin::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--color-accent);
+  opacity: 0.4;
+  animation: pulse 2s var(--ease-out) infinite;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Cartão com nome e endereço na base do mapa */
+.mapCard {
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: var(--space-4);
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.mapCard strong {
+  color: var(--color-text);
+}
+
+.mapAction {
+  margin-top: var(--space-1);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .channel:hover {
+    color: var(--color-accent);
+  }
+
+  .map:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .map {
+    min-height: 100%;
+  }
+}

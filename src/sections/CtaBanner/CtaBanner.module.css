@@ -1,0 +1,33 @@
+/*
+ * Faixa de brasa com cortes diagonais em cima e embaixo (clip-path).
+ * --cut controla a inclinação; o padding extra compensa a área cortada
+ */
+.banner {
+  --cut: clamp(1.5rem, 5vw, 4rem);
+  --color-text: var(--color-coal);
+  --color-text-muted: color-mix(in srgb, var(--color-coal) 78%, transparent);
+
+  padding-block: calc(var(--section-padding) + var(--cut) / 2);
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%);
+}
+
+/* Conteúdo centralizado e com largura de leitura confortável */
+.content {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.title {
+  max-width: 16ch;
+  font-size: clamp(2.5rem, 1.5rem + 5vw, 5rem);
+  font-weight: 900;
+}
+
+.text {
+  max-width: 32rem;
+  color: var(--color-text-muted);
+}
