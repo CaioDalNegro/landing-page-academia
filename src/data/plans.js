@@ -8,7 +8,7 @@ export const PLANS = [
     benefits: [
       'Musculação e treinamento funcional',
       'Avaliação física inicial',
-      'Acesso livre das 5h às 23h',
+      'Acesso em todo o horário de funcionamento',
       'Treino montado por professor',
     ],
   },
@@ -21,7 +21,7 @@ export const PLANS = [
     benefits: [
       'Todas as modalidades, incluindo cross training e Muay Thai',
       'Reavaliação física a cada 8 semanas',
-      'Acesso livre das 5h às 23h',
+      'Acesso em todo o horário de funcionamento',
       'Isenção da taxa de matrícula',
     ],
   },

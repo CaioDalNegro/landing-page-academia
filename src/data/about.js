@@ -20,7 +20,7 @@ export const DIFFERENTIALS = [
   {
     icon: Clock,
     title: 'Das 5h às 23h',
-    text: 'Aberto todos os dias, inclusive fins de semana, para o treino caber na sua rotina.',
+    text: 'Horário estendido nos dias úteis e aberto também aos sábados, domingos e feriados.',
   },
 ];
 

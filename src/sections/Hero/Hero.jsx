@@ -13,7 +13,7 @@ import heroPortrait1080 from '../../assets/images/hero-portrait-1080.webp';
 // Números de prova social exibidos abaixo dos CTAs
 const HERO_STATS = [
   { value: '+2.000', label: 'alunos ativos' },
-  { value: '5h–23h', label: 'todos os dias' },
+  { value: '5h–23h', label: 'de segunda a sexta' },
   { value: '4,9★', label: 'no Google' },
 ];
 
