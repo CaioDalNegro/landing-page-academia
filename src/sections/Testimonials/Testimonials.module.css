@@ -1,0 +1,117 @@
+/* ---------- Apresentação ---------- */
+
+.intro {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Nota média em destaque com estrelas e quantidade de avaliações */
+.score {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.scoreValue {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 3rem + 2vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.scoreText {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: var(--color-accent);
+}
+
+/* ---------- Cards ---------- */
+
+/* auto-fit: 1, 2 ou 3 colunas conforme o espaço, sem media query */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}
+
+/* Autor sempre na base do card com margin-top: auto */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.quoteIcon {
+  color: var(--color-accent);
+}
+
+/* O resultado concreto vem antes do texto: é o que mais convence quem lê rápido */
+.result {
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.quote {
+  margin-block: var(--space-3) var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.name,
+.meta {
+  display: block;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.meta {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 1024px) {
+  .intro {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
