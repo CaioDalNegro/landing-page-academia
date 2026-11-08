@@ -1,0 +1,153 @@
+/* Título centralizado: o foco da seção é a comparação entre os cards */
+.header {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+/* Celular: cards empilhados; desktop: 3 colunas (ver media query) */
+.list {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 26rem;
+  margin: var(--space-8) auto 0;
+}
+
+/* Card em coluna; o botão vai para o fim com margin-top: auto */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Plano em destaque: reaplica os tokens escuros dentro da seção clara */
+.featured {
+  --color-surface: var(--color-graphite);
+  --color-border: var(--color-steel);
+  --color-text: var(--color-bone);
+  --color-text-muted: var(--color-mist);
+
+  border-color: var(--color-accent);
+  box-shadow: 0 24px 48px -24px color-mix(in srgb, var(--color-coal) 60%, transparent);
+}
+
+/* Selo posicionado sobre a borda superior do card */
+.badge {
+  position: absolute;
+  top: 0;
+  left: var(--space-5);
+  translate: 0 -50%;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.name {
+  font-size: var(--fs-h3);
+}
+
+.tagline {
+  margin-top: var(--space-1);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Preço ---------- */
+
+.price {
+  margin-top: var(--space-5);
+  line-height: 1;
+}
+
+.currency,
+.cents,
+.period {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Alinha "R$" ao topo do número, como em etiquetas de preço */
+.currency {
+  vertical-align: top;
+  margin-right: var(--space-1);
+}
+
+.amount {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 3rem + 2vw, 4.5rem);
+  font-weight: 900;
+}
+
+.period {
+  color: var(--color-text-muted);
+}
+
+.billing {
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Benefícios ---------- */
+
+.benefits {
+  display: grid;
+  gap: var(--space-3);
+  margin-block: var(--space-5) var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Ícone e texto alinhados pela primeira linha, mesmo quando o texto quebra */
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-small);
+}
+
+.check {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--color-accent);
+}
+
+/* margin-top: auto empurra o botão para a base, alinhando os CTAs entre os cards */
+.cta {
+  width: 100%;
+  margin-top: auto;
+}
+
+.note {
+  margin-top: var(--space-6);
+  font-size: var(--fs-small);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Desktop: 3 colunas com o destaque mais alto ---------- */
+
+@media (min-width: 1024px) {
+  /* stretch iguala a altura dos cards, então os botões ficam na mesma linha */
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    max-width: none;
+  }
+
+  /* Margem negativa faz o destaque ultrapassar os vizinhos em cima e embaixo */
+  .featured {
+    margin-block: calc(var(--space-5) * -1);
+    padding-block: calc(var(--space-6) + var(--space-5));
+  }
+}
