@@ -1,0 +1,115 @@
+/* ---------- Apresentação ---------- */
+
+.intro {
+  display: grid;
+  gap: var(--space-7);
+}
+
+/* Números em grade 2x2, separados por linhas finas */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--color-border);
+}
+
+/*
+ * column-reverse: número acima do rótulo sem mudar a ordem semântica (dt antes de dd).
+ * No modo reverso, flex-end é o topo: mantém os números alinhados mesmo se um rótulo quebrar
+ */
+.feature {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-4) var(--space-5) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.featureValue {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.6rem + 1.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.featureLabel {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Mosaico ---------- */
+
+/*
+ * Celular e tablet: 2 colunas.
+ * Cada string é uma linha da grade; repetir um nome faz a foto ocupar várias células
+ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: clamp(9rem, 28vw, 15rem);
+  grid-template-areas:
+    'salao salao'
+    'racks halteres'
+    'racks barras'
+    'maquinas maquinas';
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.figure {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+/* object-fit preenche qualquer formato de célula sem distorcer a foto */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease-out);
+}
+
+/* Legenda em etiqueta escura no canto inferior, legível sobre qualquer foto */
+.caption {
+  position: absolute;
+  left: var(--space-3);
+  bottom: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  background-color: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (hover: hover) {
+  .figure:hover .image {
+    transform: scale(1.05);
+  }
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 1024px) {
+  .intro {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: var(--space-8);
+  }
+
+  /* Mosaico de 3 colunas: salão em destaque 2x2 e racks na vertical */
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 15rem;
+    grid-template-areas:
+      'salao salao racks'
+      'salao salao racks'
+      'maquinas barras halteres';
+    gap: var(--space-4);
+  }
+}
