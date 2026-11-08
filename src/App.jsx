@@ -1,15 +1,10 @@
 import Header from './sections/Header/Header';
 import Hero from './sections/Hero/Hero';
+import About from './sections/About/About';
+import Modalities from './sections/Modalities/Modalities';
 
 // Seções provisórias para testar a navegação; serão substituídas nas próximas etapas
-const PLACEHOLDER_SECTIONS = [
-  'sobre',
-  'modalidades',
-  'estrutura',
-  'planos',
-  'depoimentos',
-  'contato',
-];
+const PLACEHOLDER_SECTIONS = ['estrutura', 'planos', 'depoimentos', 'contato'];
 
 function App() {
   return (
@@ -17,6 +12,8 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <About />
+        <Modalities />
         {PLACEHOLDER_SECTIONS.map((id) => (
           <section
             key={id}
