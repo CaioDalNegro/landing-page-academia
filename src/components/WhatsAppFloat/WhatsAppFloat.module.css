@@ -1,0 +1,45 @@
+/*
+ * Fixo no canto inferior direito; env(safe-area-inset-*) evita a barra de gestos do iPhone.
+ * Começa invisível e fora do Tab até a página rolar
+ */
+.float {
+  position: fixed;
+  right: max(var(--space-4), env(safe-area-inset-right));
+  bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  z-index: var(--z-float);
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-whatsapp);
+  color: #fff;
+  box-shadow: 0 8px 24px -8px color-mix(in srgb, var(--color-coal) 70%, transparent);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(1rem) scale(0.9);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    visibility var(--duration-base);
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .visible:hover {
+    transform: scale(1.06);
+  }
+}
+
+/* Telas grandes: um pouco mais afastado das bordas */
+@media (min-width: 1024px) {
+  .float {
+    right: var(--space-6);
+    bottom: var(--space-6);
+  }
+}
